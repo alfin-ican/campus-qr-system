@@ -1,0 +1,21 @@
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "rm -f package-lock.json && npm install && npm run build",
+    "nixpacksConfig": {
+      "phases": {
+        "setup": {
+          "aptPkgs": ["libpng-dev", "libjpeg-dev", "libfreetype6-dev"]
+        },
+        "install": {
+          "cmds": [
+            "composer install --no-interaction --optimize-autoloader",
+            "rm -f package-lock.json",
+            "npm install",
+            "npm run build"
+          ]
+        }
+      }
+    }
+  }
+}
